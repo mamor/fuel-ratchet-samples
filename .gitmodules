@@ -1,0 +1,3 @@
+[submodule "fuel/packages/ratchet"]
+	path = fuel/packages/ratchet
+	url = git://github.com/mp-php/fuel-packages-ratchet.git

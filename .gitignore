@@ -1,0 +1,19 @@
+# Mac OS X
+.DS_Store
+
+# NetBeans
+nbproject
+
+# Eclipse
+.buildpath
+.project
+.settings
+
+# FuelPHP
+fuel/app/cache
+fuel/app/config/development
+fuel/app/logs
+fuel/app/tmp
+
+fuel/app/tests/_files/.htaccess.develop
+fuel/app/tests/_files/bootstrap.php.develop
