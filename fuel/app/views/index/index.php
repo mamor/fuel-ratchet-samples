@@ -5,9 +5,9 @@
 <table class="table">
 	<thead>
 		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Url</th>
+			<th style="width: 25%;">Name</th>
+			<th style="width: 25%;">Type</th>
+			<th style="width: 50%;">Url</th>
 		</tr>
 	</thead>
 	<tbody>
