@@ -33,11 +33,7 @@ class Controller_Ratchet_Ws_Chat extends Controller_Base
 		$username = Session::get('ratchet.ws.chat.username', false);
 		! $username and Response::redirect('ratchet/ws/chat/login');
 
-		$data = array(
-			'username' => $username,
-		);
-
-		$view = View::forge('ratchet/ws/chat/room', $data);
+		$view = View::forge('ratchet/ws/chat/room');
 		$view->set_global('title', 'Single ChatRoom');
 		$this->template->content = $view;
 	}
