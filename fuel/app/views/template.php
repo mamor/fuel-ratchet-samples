@@ -100,7 +100,7 @@ body { font-family: "<?php echo $webfont; ?>", sans-serif; }
 
 </div>
 
-<a href="https://github.com/mp-php/fuel-packages-ratchet"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 9999;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+<a target="_blank" href="https://github.com/mp-php/fuel-packages-ratchet"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 9999;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
 </body>
 </html>
