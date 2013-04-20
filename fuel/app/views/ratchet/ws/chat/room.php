@@ -126,7 +126,7 @@ $(document).ready(function() {
 				var tr = $('<tr></tr>');
 
 				if (json.resource_id == my_resource_id) {
-					tr.attr('class', 'warning');
+					tr.attr('class', 'info');
 				}
 
 				var td_username = $('<td>' + json.username + '</td>');
