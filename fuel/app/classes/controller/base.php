@@ -49,4 +49,12 @@ class Controller_Base extends Controller_Template
 
 	}
 
+	/**
+	 * 404
+	 */
+	public function action_404()
+	{
+		return Response::redirect();
+	}
+
 }
