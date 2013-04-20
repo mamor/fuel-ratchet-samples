@@ -13,7 +13,7 @@
 	<tbody>
 		<tr>
 			<td>Single ChatRoom</td>
-			<td>MessageComponentInterface</td>
+			<td>WsServer</td>
 			<td><?php echo Html::anchor('ratchet/ws/chat/login'); ?></td>
 		</tr>
 	</tbody>

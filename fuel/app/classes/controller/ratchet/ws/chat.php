@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MessageComponentInterfaceを用いた単一部屋チャットサンプル
+ * WsServerを用いた単一部屋チャットサンプル
  *
  * Url:
  * /ratchet/ws/chat/{action}
