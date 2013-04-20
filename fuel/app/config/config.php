@@ -8,10 +8,12 @@ return array(
 	'default_timezone' => 'Asia/Tokyo',
 	'always_load' => array(
 		'packages' => array(
+			'ratchet',
 			//'orm',
-			//'log',
+			'log',
 		),
 		'config' => array(
+			'app',
 		),
 	),
 

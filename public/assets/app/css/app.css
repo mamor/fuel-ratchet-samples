@@ -1,0 +1,11 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+#icons a {
+	text-decoration: none;
+}
+#icons a > i {
+	margin-left: 10px;
+	color: #333333;
+}
