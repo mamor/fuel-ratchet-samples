@@ -4,6 +4,19 @@
 <meta charset="utf-8">
 <title><?php echo $title; ?> | FuelPHP x Ratchet Demo</title>
 
+<meta name="description" content="FuelPHP x Ratchet Demo">
+<meta name="author" content="mamor">
+
+<!--og-->
+<meta property="og:title" content="FuelPHP x Ratchet Demo"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="http://fuelratchet.madroom.org/"/>
+<meta property="og:image" content="http://madroom.org/assets/img/wolf.png"/>
+<meta property="og:site_name" content="FuelPHP x Ratchet Demo"/>
+<meta property="fb:admins" content="1821765896"/>
+<meta property="og:description" content="FuelPHP x Ratchet Demo"/>
+<!--/og-->
+
 <?php echo Asset::render('global'); ?>
 
 <?php if (($webfont = Config::get('app.webfont', false)) !== false): ?>
