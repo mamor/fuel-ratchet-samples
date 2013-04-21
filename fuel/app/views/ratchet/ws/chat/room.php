@@ -157,7 +157,7 @@ $(document).ready(function() {
 	 * メッセージ送信
 	 */
 	$("#message > input").keypress(function(event) {
-		if(event.which === 13 && $(this).val()) {
+		if(event.which == 13 && $(this).val()) {
 			ws.send($(this).val());
 			$(this).val('');
 		}
