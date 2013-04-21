@@ -52,12 +52,12 @@ $(document).ready(function() {
 	/**
 	 * WebSocketのコネクション
 	 */
-	var conn = new WebSocket("<?php echo Ratchet::get_uri('Ratchet_Ws_Chat'); ?>");
+	var ws = new WebSocket("<?php echo Ratchet::get_uri('Ratchet_Ws_Chat'); ?>");
 
 	/**
 	 * 接続
 	 */
-	conn.onopen = function(e) {
+	ws.onopen = function(e) {
 		// do nothing.
 	};
 
@@ -65,10 +65,12 @@ $(document).ready(function() {
 	 * 各種受信
 	 */
 	var my_resource_id;
-	conn.onmessage = function(e) {
+	ws.onmessage = function(e) {
+
 		var json = $.parseJSON(e.data);
 
 		switch (json.type) {
+
 			// メンバー一覧受信
 			case 'open':
 				my_resource_id = json.resource_id;
@@ -91,8 +93,8 @@ $(document).ready(function() {
 					}
 
 				});
-
 			break;
+
 			// 入室者受信
 			case 'join':
 				var li = $('<li></li>');
@@ -104,12 +106,14 @@ $(document).ready(function() {
 
 				li.appendTo($('#members > ul')).hide().fadeIn(1000);
 			break;
+
 			// 退室者受信
 			case 'leave':
 				$('#' + json.resource_id).fadeOut(1000, function() {
 					$(this).remove();
 				});
 			break;
+
 			// メッセージ受信
 			case 'msg':
 				var chat = $('#chat > table > tbody > tr');
@@ -135,6 +139,7 @@ $(document).ready(function() {
 				tr.append(td_username).append(td_msg).append(td_posted_at);
 				tr.appendTo($('#chat > table > tbody')).hide().fadeIn(1000);
 			break;
+
 			// エラー
 			case 'error':
 				var p = $('#message > .alert-error > p');
@@ -153,7 +158,7 @@ $(document).ready(function() {
 	 */
 	$("#message > input").keypress(function(event) {
 		if(event.which === 13 && $(this).val()) {
-			conn.send($(this).val());
+			ws.send($(this).val());
 			$(this).val('');
 		}
 	});
