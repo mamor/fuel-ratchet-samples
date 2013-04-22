@@ -58,7 +58,21 @@ $(document).ready(function() {
 	 * 接続
 	 */
 	ws.onopen = function(e) {
-		// do nothing.
+		console.log('WebSocket onopen.');
+	};
+
+	/**
+	 * 切断
+	 */
+	ws.onclose = function(e) {
+		console.log('WebSocket onclose.');
+	};
+
+	/**
+	 * エラー
+	 */
+	ws.onerror = function(e) {
+		console.log('WebSocket onerror.');
 	};
 
 	/**
@@ -66,6 +80,8 @@ $(document).ready(function() {
 	 */
 	var my_resource_id;
 	ws.onmessage = function(e) {
+
+		console.log('WebSocket onmessage.');
 
 		var json = $.parseJSON(e.data);
 
