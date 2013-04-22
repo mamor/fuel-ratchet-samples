@@ -174,10 +174,20 @@ $(document).ready(function() {
 	 */
 	$("#message > input").keypress(function(event) {
 		if(event.which == 13 && $(this).val()) {
-			ws.send($(this).val());
+			ws.send(JSON.stringify({type: 'msg', msg: $(this).val()}));
 			$(this).val('');
 		}
 	});
+
+	/**
+	 * ping送信
+	 * 
+	 * TODO: 放置するとコネクションが切れるので、暫定的な対策
+	 */
+	setInterval(function() {
+		console.log('Send ping.');
+		ws.send(JSON.stringify({type: 'ping'}));
+	}, 30000);
 
 });
 </script>

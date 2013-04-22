@@ -145,8 +145,8 @@ class Ratchet_Ws_Chat extends Ratchet_Ws
 	 * @param \Ratchet\ConnectionInterface $from
 	 * @param type $msg
 	 */
-	public function onMessage(\Ratchet\ConnectionInterface $from, $msg) {
-		parent::onMessage($from, $msg);
+	public function onMessage(\Ratchet\ConnectionInterface $from, $json) {
+		parent::onMessage($from, $json);
 
 		// 不正なアクセス
 		if ( ! $from->session instanceof Session_Driver)
@@ -154,31 +154,42 @@ class Ratchet_Ws_Chat extends Ratchet_Ws
 			return;
 		}
 
-		// バリデーション
-		if ( ! $this->validation->run(array('msg' => $msg)))
+		$json = json_decode($json);
+
+		switch ($json->type)
 		{
-			$array = array(
-				'type' => 'error',
-				'errors' => (array) $this->validation->error(),
-			);
+			case 'ping':
+				// TODO: 放置するとコネクションが切れるので、暫定的な対策
+			break;
+			case 'msg':
+				// バリデーション
+				if ( ! $this->validation->run(array('msg' => $json->msg)))
+				{
+					$array = array(
+						'type' => 'error',
+						'errors' => (array) $this->validation->error(),
+					);
 
-			$from->send(json_encode(Security::htmlentities($array)));
+					$from->send(json_encode(Security::htmlentities($array)));
 
-			return;
+					return;
+				}
+
+				foreach ($this->clients as $client) {
+//					if ($from != $client) { // 本人には送信しない
+						$array = array(
+							'type' => 'msg',
+							'resource_id' => $from->resourceId,
+							'username' => $from->session->get('ratchet.ws.chat.username'),
+							'msg' => Str::sub($json->msg, 0, 20),
+							'posted_at' => time(),
+						);
+						$client->send(json_encode(Security::htmlentities($array)));
+//					}
+				}
+			break;
 		}
 
-		foreach ($this->clients as $client) {
-//			if ($from != $client) { // 本人には送信しない
-				$array = array(
-					'type' => 'msg',
-					'resource_id' => $from->resourceId,
-					'username' => $from->session->get('ratchet.ws.chat.username'),
-					'msg' => Str::sub($msg, 0, 20),
-					'posted_at' => time(),
-				);
-				$client->send(json_encode(Security::htmlentities($array)));
-//			}
-		}
 	}
 
 	/**
