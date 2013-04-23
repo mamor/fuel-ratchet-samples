@@ -75,12 +75,12 @@ class Ratchet_Ws_Chat extends Ratchet_Ws
 
 		// 入室者にメンバー一覧を送信
 		$array['type'] = 'open';
-		$array['resource_id'] = $conn->resourceId;
+		$array['hash_id'] = md5($conn->resourceId);
 		$array['username'] = $conn->session->get('ratchet.ws.chat.username');
 
 		foreach (static::$members as $resource_id => $username) {
 			$array['members'][] = array(
-				'resource_id' => $resource_id,
+				'hash_id' => md5($resource_id),
 				'username' => $username,
 			);
 		}
@@ -91,7 +91,7 @@ class Ratchet_Ws_Chat extends Ratchet_Ws
 		foreach ($this->clients as $client) {
 			$array = array(
 				'type' => 'join',
-				'resource_id' => $conn->resourceId,
+				'hash_id' => md5($conn->resourceId),
 				'username' => $conn->session->get('ratchet.ws.chat.username'),
 			);
 			$client->send(json_encode(Security::htmlentities($array)));
@@ -131,7 +131,7 @@ class Ratchet_Ws_Chat extends Ratchet_Ws
 		foreach ($this->clients as $client) {
 			$array = array(
 				'type' => 'leave',
-				'resource_id' => $conn->resourceId,
+				'hash_id' => md5($conn->resourceId),
 				'username' => $conn->session->get('ratchet.ws.chat.username'),
 			);
 			$client->send(json_encode(Security::htmlentities($array)));
@@ -179,7 +179,7 @@ class Ratchet_Ws_Chat extends Ratchet_Ws
 //					if ($from != $client) { // 本人には送信しない
 						$array = array(
 							'type' => 'msg',
-							'resource_id' => $from->resourceId,
+							'hash_id' => md5($from->resourceId),
 							'username' => $from->session->get('ratchet.ws.chat.username'),
 							'msg' => Str::sub($json->msg, 0, 20),
 							'posted_at' => time(),

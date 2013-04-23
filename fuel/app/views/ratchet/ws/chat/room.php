@@ -78,7 +78,7 @@ $(document).ready(function() {
 	/**
 	 * 各種受信
 	 */
-	var my_resource_id;
+	var my_hash_id;
 	ws.onmessage = function(e) {
 
 		console.log('WebSocket onmessage.');
@@ -89,15 +89,15 @@ $(document).ready(function() {
 
 			// メンバー一覧受信
 			case 'open':
-				my_resource_id = json.resource_id;
+				my_hash_id = json.hash_id;
 
 				$.each(json.members, function(index, member) {
 					var li = $('<li></li>');
-					li.attr('id', member.resource_id);
+					li.attr('id', member.hash_id);
 
 					var span = $('<span>' + member.username + '</span>');
 
-					if (member.resource_id == my_resource_id) {
+					if (member.hash_id == my_hash_id) {
 						span.attr('class', 'me');
 						li.append(span);
 
@@ -114,7 +114,7 @@ $(document).ready(function() {
 			// 入室者受信
 			case 'join':
 				var li = $('<li></li>');
-				li.attr('id', json.resource_id);
+				li.attr('id', json.hash_id);
 
 				var span = $('<span>' + json.username + '</span>');
 
@@ -125,7 +125,7 @@ $(document).ready(function() {
 
 			// 退室者受信
 			case 'leave':
-				$('#' + json.resource_id).fadeOut(1000, function() {
+				$('#' + json.hash_id).fadeOut(1000, function() {
 					$(this).remove();
 				});
 			break;
@@ -145,7 +145,7 @@ $(document).ready(function() {
 
 				var tr = $('<tr></tr>');
 
-				if (json.resource_id == my_resource_id) {
+				if (json.hash_id == my_hash_id) {
 					tr.attr('class', 'info');
 				}
 
