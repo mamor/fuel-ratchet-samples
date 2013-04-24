@@ -140,6 +140,18 @@ class Ratchet_Ws_Chat extends Ratchet_Ws
 	}
 
 	/**
+	 * TODO: 発生タイミングを確認
+	 * 
+	 * @param \Ratchet\ConnectionInterface $conn
+	 * @param \Exception $e
+	 */
+	public function onError(\Ratchet\ConnectionInterface $conn, \Exception $e) {
+		parent::onError($conn, $e);
+
+		$conn->close();
+	}
+
+	/**
 	 * メッセージ送受信
 	 * 
 	 * @param \Ratchet\ConnectionInterface $from
@@ -190,18 +202,6 @@ class Ratchet_Ws_Chat extends Ratchet_Ws
 			break;
 		}
 
-	}
-
-	/**
-	 * TODO: 発生タイミングを確認
-	 * 
-	 * @param \Ratchet\ConnectionInterface $conn
-	 * @param \Exception $e
-	 */
-	public function onError(\Ratchet\ConnectionInterface $conn, \Exception $e) {
-		parent::onError($conn, $e);
-
-		$conn->close();
 	}
 
 }
