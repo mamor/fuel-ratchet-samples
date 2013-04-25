@@ -24,7 +24,7 @@ class Ratchet_Ws_Chat extends Ratchet_Ws
 	private static $members = array();
 
 	/**
-	 *Validationインスタンス
+	 * Validationインスタンス
 	 * 
 	 * @var type Validation
 	 */
@@ -155,7 +155,7 @@ class Ratchet_Ws_Chat extends Ratchet_Ws
 	 * メッセージ送受信
 	 * 
 	 * @param \Ratchet\ConnectionInterface $from
-	 * @param type $msg
+	 * @param string $msg 
 	 */
 	public function onMessage(\Ratchet\ConnectionInterface $from, $json) {
 		parent::onMessage($from, $json);

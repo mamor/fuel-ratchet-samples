@@ -14,7 +14,7 @@
 		<tr>
 			<td>Single ChatRoom</td>
 			<td>WsServer</td>
-			<td><?php echo Html::anchor('ratchet/ws/chat/login'); ?></td>
+			<td><?php echo Html::anchor('ratchet/ws/chat/join'); ?></td>
 		</tr>
 	</tbody>
 </table>

@@ -31,7 +31,7 @@ class Controller_Ratchet_Ws_Chat extends Controller_Base
 	public function action_room()
 	{
 		$username = Session::get('ratchet.ws.chat.username', false);
-		! $username and Response::redirect('ratchet/ws/chat/login');
+		! $username and Response::redirect('ratchet/ws/chat/join');
 
 		$view = View::forge('ratchet/ws/chat/room');
 		$view->set_global('title', 'Single ChatRoom');
@@ -39,9 +39,9 @@ class Controller_Ratchet_Ws_Chat extends Controller_Base
 	}
 
 	/**
-	 * ログイン
+	 * 入室
 	 */
-	public function action_login()
+	public function action_join()
 	{
 		if (Input::method() == 'POST')
 		{
@@ -62,18 +62,18 @@ class Controller_Ratchet_Ws_Chat extends Controller_Base
 			Session::set_flash('errors', $v->error());
 		}
 
-		$view = View::forge('ratchet/ws/chat/login');
-		$view->set_global('title', 'Single ChatRoom Login');
+		$view = View::forge('ratchet/ws/chat/join');
+		$view->set_global('title', 'Single ChatRoom Join');
 		$this->template->content = $view;
 	}
 
 	/**
-	 * ログアウト
+	 * 退室
 	 */
-	public function action_logout()
+	public function action_leave()
 	{
 		Session::destroy();
-		Response::redirect('ratchet/ws/chat/login');
+		Response::redirect('ratchet/ws/chat/join');
 	}
 
 }

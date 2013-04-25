@@ -9,5 +9,5 @@
 <?php echo Form::input('username', Input::post('username'), array('placeholder' => 'Your name ...', 'maxlength' => '10')); ?>
 <br />
 <?php echo Form::hidden(Config::get('security.csrf_token_key'), Security::fetch_token()); ?>
-<?php echo Form::submit('submit', 'Login', array('class' => 'btn')); ?>
+<?php echo Form::submit('submit', 'Join', array('class' => 'btn')); ?>
 <?php echo Form::close(); ?>

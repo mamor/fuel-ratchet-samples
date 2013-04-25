@@ -6,7 +6,7 @@
 			<ul></ul>
 		</div><!-- /#members-->
 
-		<?php echo Html::anchor('ratchet/ws/chat/logout', 'Logout', array('class' => 'btn btn-link')); ?>
+		<?php echo Html::anchor('ratchet/ws/chat/leave', 'Leave', array('class' => 'btn btn-link')); ?>
 
 	</div><!-- /.span-->
 
