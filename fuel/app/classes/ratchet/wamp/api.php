@@ -176,6 +176,10 @@ class Ratchet_Wamp_Api extends Ratchet_Wamp
 		Log::debug('********** '.__FUNCTION__.' end **********');
 
 		switch ($fn) {
+			case 'ping':
+				// TODO: 放置するとコネクションが切れるので、暫定的な対策
+			break;
+
 			// 購読しているトピック一覧を取得
 			case 'get_subscribing_topics':
 				$subscribing_topics = array();
