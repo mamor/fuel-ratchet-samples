@@ -16,6 +16,11 @@
 			<td>WsServer</td>
 			<td><?php echo Html::anchor('ratchet/ws/chat/join'); ?></td>
 		</tr>
+		<tr>
+			<td>API Console</td>
+			<td>WampServer</td>
+			<td><?php echo Html::anchor('ratchet/wamp/api'); ?></td>
+		</tr>
 	</tbody>
 </table>
 
