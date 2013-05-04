@@ -10,7 +10,6 @@ return array(
 		'packages' => array(
 			'ratchet',
 			//'orm',
-			'log',
 		),
 		'config' => array(
 			'app',
