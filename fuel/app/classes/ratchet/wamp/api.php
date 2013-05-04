@@ -7,6 +7,7 @@
  * $ php oil r ratchet:wamp Ratchet_Wamp_Api
  * 
  * TODO: 同一ブラウザで複数タブを開いた時のコネクション共有は可能か
+ * TODO: 同一トピックを複数回購読すると同じ数だけメッセージを受信してしまう
  * 
  * @author    Mamoru Otsuka http://madroom-project.blogspot.jp/
  * @copyright 2013 Mamoru Otsuka
