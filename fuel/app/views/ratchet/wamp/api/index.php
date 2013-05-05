@@ -69,9 +69,7 @@ $(document).ready(function() {
 
 				// 各種エラーメッセージ受信用
 				sess.subscribe('error', function (topic, event) {
-					console.log("-- Error received --");
-					console.log("Topic: " + topic);
-					console.log("event: " + JSON.stringify(event));
+					console.log("Received error > Topic:" + topic + " Event:" + JSON.stringify(event));
 				});
 			},
 
@@ -108,12 +106,10 @@ $(document).ready(function() {
 		var input = $("#publish > input");
 		var select = $("#publish > select");
 
-		console.log("-- Publish --");
 		if(input.val().length == 0) {
-			console.log("Input is empty.");
+			console.log("Publish: Input is empty.");
 		} else {
-			console.log("Topic: " + select.val());
-			console.log("Msg: " + input.val());
+			console.log("Publish: Topic=>" + select.val() + " Msg=>" + input.val());
 
 			sess.publish(select.val(), JSON.stringify({msg: input.val()}));
 			input.val('');
@@ -124,13 +120,10 @@ $(document).ready(function() {
 	$("#subscribe > button").click(function() {
 		var select = $("#subscribe > select");
 
-		console.log("-- Subscribe --");
-		console.log("Topic: " + select.val());
+		console.log("Subscribe: Topic=>" + select.val());
 
 		sess.subscribe(select.val(), function (topic, event) {
-			console.log("-- Received --");
-			console.log("Topic: " + topic);
-			console.log("event: " + event);
+			console.log("Received: Topic=>" + topic + " Event=>" + event);
 		});
 	});
 
@@ -138,8 +131,7 @@ $(document).ready(function() {
 	$("#unsubscribe > button").click(function() {
 		var select = $("#unsubscribe > select");
 
-		console.log("-- Unsubscribe --");
-		console.log("Topic: " + select.val());
+		console.log("Unsubscribe: Topic=>" + select.val());
 
 		try {
 			sess.unsubscribe(select.val());
@@ -152,15 +144,14 @@ $(document).ready(function() {
 	$("#rpc > button").click(function() {
 		var select = $("#rpc > select");
 
-		console.log("-- RPC --");
-		console.log("Method: " + select.val());
+		console.log("RPC: Method=>" + select.val());
 
 		sess.call(select.val()).then(function (result) {
 			// do stuff with the result
-			console.log(result);
+			console.log("RPC: Result=>" + JSON.stringify(result));
 		}, function(error) {
 			// handle the error
-			console.log(error);
+			console.log("RPC: Error=>" + JSON.stringify(error));
 		});
 	});
 
