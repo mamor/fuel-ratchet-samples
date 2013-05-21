@@ -22,3 +22,12 @@ restart-all:
 # make status
 status:
 	sudo supervisorctl -c fuel/packages/ratchet/supervisor.conf status
+
+help:
+	@echo 'Commands:'
+	@echo '  make up'
+	@echo '  make down'
+	@echo '  make start-all'
+	@echo '  make stop-all'
+	@echo '  make restart-all'
+	@echo '  make status'
