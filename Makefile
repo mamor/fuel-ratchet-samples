@@ -23,6 +23,7 @@ restart-all:
 status:
 	sudo supervisorctl -c fuel/packages/ratchet/supervisor.conf status
 
+# make help
 help:
 	@echo 'Commands:'
 	@echo '  make up'
